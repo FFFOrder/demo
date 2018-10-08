@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="include :: header"></head>
+<body>
+<div width="500">
+    <div>
+        <button onclick="login()">layer</button>
+        <a id="login" href="/login" th:text="${username}"></a>
+        <button id="exit" onclick="exit()">退出</button>
+        <div>
+            <a href="/shoppingcart">购物车</a>
+        </div>
+    </div>
+    <div id="goods">
+        <div th:each="item:${goods}" style="float:left">
+            <a th:href="@{'/item/'} + ${item.id}">
+                <img th:src="@{'/images/' + ${item.id} + '.jpg'}" width="100px" height="100px"/>
+                <div th:text="${item.name}"></div>
+                <div th:text="${item.price}"></div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div th:include="include :: footer"></div>
+<script src="/js/index.js"></script>
+</body>
+</html>

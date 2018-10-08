@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="include :: header"></head>
+<body>
+<div>
+    <form id="signupForm">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-block">
+                <input id="username" type="text" name="username" class="layui-input"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-block">
+                <input id="password" type="password" name="password" class="layui-input"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认密码</label>
+            <div class="layui-input-block">
+                <input id="confirmpassword" type="password" name="confirmpassword" class="layui-input"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="submit" value="Submit提交" class="layui-btn"/>
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include :: footer"></div>
+<script>
+    $.validator.setDefaults({
+        submitHandler: function() {
+          register();
+        }
+    });
+    $().ready(function() {
+        $("#signupForm").validate({
+             rules:{
+                username: "required",
+                password: "required",
+                confirmpassword:{
+                    required: true,
+                    equalTo: "#password"
+                }
+            },
+            messages: {
+                username: "请输入用户名",
+                password: "请输入密码",
+                confirmpassword: {
+                    required: "请再次输入密码",
+                    equalTo: "密码不一致"
+                }
+            }
+        })
+    });
+    function register()
+    {
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "register",
+            data: $('#signupForm').serialize(),
+            async: false,
+            success : function(data)
+            {
+                if(data == 0){
+                    layer.msg("注册成功");
+                    setTimeout("parent.location.href = '/'", 2000);
+                }
+                else
+                {
+                    layer.msg("该用户已存在");
+                }
+            }
+        });
+    }
+    </script>
+</body>
+</html>

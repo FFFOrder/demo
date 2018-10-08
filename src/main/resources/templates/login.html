@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="include :: header"></head>
+<body>
+    <div>
+        <form id="signupForm">
+            <div class="layui-form-item">
+                <label class="layui-form-label">用户名</label>
+                <div class="layui-input-block">
+                    <input type="text" name="username" class="layui-input" required="required"/>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">密码</label>
+                <div class="layui-input-block">
+                    <input type="password" name="password" class="layui-input" required="required"/>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <div class="layui-input-block">
+                    <input type="submit" value="登录" class="layui-btn"/>
+                    <a href="/register">注册</a>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div th:include="include :: footer"></div>
+    <script>
+    $.validator.setDefaults({
+        submitHandler: function() {
+          login();
+        }
+    });
+    $().ready(function() {
+        $("#signupForm").validate();
+    });
+    function login()
+    {
+        $.ajax({
+            cache: true,
+            type: "POST",
+            url: "identification",
+            data: $('#signupForm').serialize(),
+            async: false,
+            success : function(r)
+            {
+                if(r == 1){
+                    parent.location.href = '/';
+                }
+                else
+                {
+                    layer.msg("用户名或密码错误");
+                }
+            }
+        });
+    }
+    </script>
+</body>
+</html>
