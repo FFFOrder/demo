@@ -137,4 +137,13 @@ public class DemoController {
     void exit(HttpSession httpSession){
         httpSession.removeAttribute("username");
     }
+
+    @PostMapping("getUser")
+    @ResponseBody
+    String getUser(HttpSession httpSession){
+        if (httpSession.getAttribute("username") != null)
+            return httpSession.getAttribute("username").toString();
+        else
+            return "";
+    }
 }

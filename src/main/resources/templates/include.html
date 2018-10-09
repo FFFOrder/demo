@@ -6,4 +6,13 @@
     <script src="/js/common/jquery-3.3.1.js"></script>
     <script src="/js/common/jquery.validate.js"></script>
     <script src="/layer/layer.js"></script>
+    <script src="/js/topDiv.js"></script>
+</div>
+<div th:fragment="topDiv">
+    <div>
+        <a href="/">首页</a>
+        <button id="login" onclick="login()">登录</button>
+        <button id="exit" onclick="exit()">退出</button>
+        <a id="shoppingcart" href="/shoppingcart">购物车</a>
+    </div>
 </div>

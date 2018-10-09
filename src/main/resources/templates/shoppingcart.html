@@ -5,6 +5,7 @@
     <title>Title</title>
 </head>
 <body>
+    <div th:include="include :: topDiv"></div>
     <div th:each="item:${list}" style="width:800px;border-style:solid;">
         <div style="display:inline;width:150px">
             <img th:src="@{'/images/' + ${item.goodsid} + '.jpg'}" width="100px" height="100px"/>

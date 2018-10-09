@@ -1,11 +1,19 @@
 $().ready(function() {
     var a = $("#login");
-    if(a.text() == "")
+    var username = getUser();
+
+    if(username != null && username != "")
     {
-        a.text("登录");
+        a.attr("disabled", true);
+        a.text(username);
+    }
+    else
+    {
         $("#exit").hide();
+        $("#shoppingcart").hide();
     }
 });
+
 function login()
 {
     layer.open({
@@ -18,6 +26,26 @@ function login()
         content: '/login'
     });
 }
+
+function getUser(){
+    var r;
+    $.ajax({
+        cache : true,
+        type : "POST",
+        url : "/getUser",
+        data : { },
+        async : false,
+        error : function(request) {
+            layer.alert("Connection error");
+            r = "";
+        },
+        success : function(username) {
+            r = username;
+        }
+    });
+    return r;
+}
+
 function exit(){
     $.ajax({
         cache : true,
