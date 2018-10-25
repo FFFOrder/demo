@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--禁用缓存-->
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta charset="UTF-8">
+    <title>商品管理</title>
+</head>
+<head th:include="include :: header"></head>
+<link rel="stylesheet" href="/css/manager/manager.css">
+<body>
+<div class="top">商品管理<a href="/manager/exit" class="exit">退出</a></div>
+<div class="tool-box">
+    <button id="add" class="layui-btn layui-btn-xs" onclick="add()">添加</button>
+    <div class="search-box">
+        <input class="search-input" type="text" id="keyword" placeholder="请输入关键词" th:value="${search}">
+        <button id="search" class="search-btn" onclick="tableReload()">查询</button>
+    </div>
+</div>
+<table id="table" class="layui-hide" lay-filter="table"></table>
+<script id="toolbar" type="text/html">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+    <a class="layui-btn layui-btn-xs" lay-event="uploadImg">图片</a>
+</script>
+</body>
+<div th:include="include :: js"></div>
+<script src="/js/manager/manager.js"></script>
+</html>

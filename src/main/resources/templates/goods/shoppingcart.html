@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<head th:include="include :: header"></head>
+<link rel="stylesheet" href="/css/goods/shoppingcart.css">
+<body>
+<div th:include="topDiv :: topDiv"></div>
+<div  class="main-box">
+    <div th:each="item:${list}" class="item-box">
+        <div class="img-box">
+            <img th:src="@{'/images/' + ${item.goodsid} + '.jpg'}" class="item-img"/>
+        </div>
+        <div class="info-box">
+            <div th:text="${item.goodsname}"></div>
+            <div th:text="${item.info}" class="info-text"></div>
+        </div>
+        <div th:text="@{'数量：' + ${item.goodsnumber}}"  class="info-box"></div>
+        <div th:text="@{'￥' + ${item.price}}"  class="info-box font-red"></div>
+        <div class="info-box">
+            <button th:onclick="|buy('${item.id}')|">购买</button>
+            <button th:onclick="|del('${item.id}')|">删除</button>
+        </div>
+    </div>
+    <div id="bottom">
+        <div id="totalPrice">
+            总共：<label th:text="${totalPrice}"></label>
+        </div>
+        <div>
+            <button onclick="buyAll()">全部购买</button>
+        </div>
+    </div>
+    <div id="noGoods" style="display:none">购物车是空的</div>
+</div>
+<input type="hidden" id="size" th:value="${size}"/>
+</body>
+<script src="/js/goods/shoppingcart.js"></script>
+</html>

@@ -1,0 +1,32 @@
+.main-box {
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    display: block;
+}
+.goods {
+    margin-top:50px;
+}
+.item-box {
+    width: 200px;
+    height: 300px;
+    float: left;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+.item-img {
+    width: 200px;
+    height: 150px;
+}
+.item-inline {
+    display: inline;
+}
+.font-red {
+    color:red;
+}
+.float-right {
+    float: right;
+}
+.border{
+    border: 3px solid red;
+}

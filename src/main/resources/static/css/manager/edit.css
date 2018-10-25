@@ -1,0 +1,43 @@
+.main-box {
+    width: 80%;
+    margin: 0 auto;
+}
+.image {
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+.image-text {
+    position: absolute;
+    width:100px;
+    height:100px;
+    line-height: 100px;
+    text-align: center;
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    display: none;
+}
+.image-text:hover{
+    color: white;
+}
+.box{
+    width: 100px;
+    height: 100px;
+    float: left;
+}
+.box:hover .image-text{
+    display: block;
+}
+.border{
+    border: 3px solid red;
+}
+.img-label{
+    float: left;
+}
+.image-input{
+    width: 100px;
+    height:100px;
+    position: absolute;
+    cursor: pointer;
+    opacity:0;
+}

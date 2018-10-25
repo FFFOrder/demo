@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<head th:include="include :: header"></head>
+<link rel="stylesheet" href="/css/manager/edit.css">
+<body>
+<div class="main-box">
+    <form id="form" class="layui-form" onreset="resetImg()">
+        <input name="id" id="id" type="hidden" th:value="${item.id}">
+        <div class="layui-form-item">
+            <label class="layui-form-label">商品名称</label>
+            <div class="layui-input-block">
+                <input id="name" name="name" type="text" placeholder="请输入名称" class="layui-input" th:value="${item.name}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">价格</label>
+            <div class="layui-input-block">
+                <input id="price" name="price" type="number" min="0" placeholder="请输入价格"  class="layui-input" th:value="${item.price}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">库存</label>
+            <div class="layui-input-block">
+                <input id="number" name="number" type="number" min="0" lay-verify="required" placeholder="请输入库存"  class="layui-input" th:value="${item.number}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">销量</label>
+            <div class="layui-input-block">
+                <input id="sold" name="sold" type="number" min="0" lay-verify="required" placeholder="请输入销量"  class="layui-input" th:value="${item.sold}">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">备注</label>
+            <div class="layui-input-block">
+                <textarea id="info" name="info" maxlength="100" class="layui-input" th:text="${item.info}" onkeyup="countWord()"></textarea>
+                <div><span id="countWord">0</span>/100</div>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">图片</label>
+            <div class="box">
+                <img th:src="@{'/images/' + ${item.id} + '.jpg'}" class="image" id="image">
+                <div class="image-text">选择图片</div>
+                <input id="image-input" name="image-input" class="image-input" type="file" accept="image/*" onchange="preview(this)">
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="submit" class="layui-btn" value="提交">
+                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<div th:include="include :: js"></div>
+<script src="/js/manager/edit.js"></script>
+</html>

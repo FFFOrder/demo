@@ -7,6 +7,7 @@ public class CartDO {
     private int goodsnumber;
     private String goodsname;
     private double price;
+    private String info;
 
     public String getId(){
         return  id;
@@ -22,6 +23,9 @@ public class CartDO {
     }
     public String getGoodsname() { return goodsname; }
     public double getPrice() { return price; }
+    public String getInfo() {
+        return info;
+    }
 
     public void setId(String id){
         this.id = id;
@@ -37,4 +41,7 @@ public class CartDO {
     }
     public void setGoodsname(String goodsname) { this.goodsname = goodsname; }
     public void setPrice(double price) { this.price = price; }
+    public void setInfo(String info){
+        this.info = info;
+    }
 }

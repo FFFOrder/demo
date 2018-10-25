@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!--禁用缓存-->
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="/css/manager/uploadImg.css">
+<body>
+<div class="main-box">
+    <div class="item-box">
+        <div class="info-box">当前图片</div>
+        <div class="info-box">
+            <img id="item-img" th:src="@{'/images/' + ${id} + '.jpg'}" alt="无" class="item-img">
+        </div>
+    </div>
+    <div class="item-box">
+        <div class="upload-box">
+            <div class="button-div">选择图片</div>
+            <input id="image" type="file" accept="image/*" onchange="preview(this)" class="file">
+            <img id="preview" src="" class="preview">
+            <button class="upload-btn" th:onclick="|save('${id}')|">保存</button>
+        </div>
+    </div>
+</div>
+</body>
+<div th:include="include :: js"></div>
+<script src="/js/manager/uploadImg.js"></script>
+</html>

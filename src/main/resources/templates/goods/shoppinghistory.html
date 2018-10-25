@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<head th:include="include :: header"></head>
+<link rel="stylesheet" href="/css/goods/shoppinghistory.css">
+<body>
+<div th:include="topDiv :: topDiv"></div>
+<div class="main-box">
+    <div th:each="item:${list}" class="item-box">
+        <div class="img-box">
+            <img th:src="@{'/images/' + ${item.goodsid} + '.jpg'}" class="item-img"/>
+        </div>
+        <div class="info-box">
+            <div th:text="${item.goodsname}"></div>
+            <div th:text="${item.info}" class="info-text"></div>
+        </div>
+        <div th:text="@{'数量：' + ${item.goodsnumber}}"  class="info-box"></div>
+        <div th:text="@{'￥' + ${item.money}}"  class="info-box font-red"></div>
+        <div class="info-box" th:text="${item.time}"></div>
+    </div>
+    <div id="noGoods" style="display:none">没有购物记录</div>
+</div>
+<input type="hidden" id="size" th:value="${size}"/>
+</body>
+<div th:include="include :: js"></div>
+<script src="/js/goods/shoppinghistory.js"></script>
+</html>

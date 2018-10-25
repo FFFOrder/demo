@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.UserDao">
+    <select id="getPassWord" resultType="java.lang.String">
+        select password from user where username=#{username}
+    </select>
+    <insert id="add" parameterType="com.example.demo.domain.UserDO">
+        insert into user (
+            username,
+            password
+        )
+        values
+        (
+            #{username},
+            #{password}
+        )
+    </insert>
+    <select id="get" resultType="com.example.demo.domain.UserDO">
+        select username, phone, email from user
+        <where>
+            <if test="username != null and username != ''">and username = #{username}</if>
+        </where>
+    </select>
+    <update id="update" parameterType="com.example.demo.domain.UserDO">
+        update user
+        <set>
+            <if test="phone != null">phone = #{phone},</if>
+            <if test="email != null">email = #{email}</if>
+        </set>
+        where username = #{username}
+    </update>
+</mapper>

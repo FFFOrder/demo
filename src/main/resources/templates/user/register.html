@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="include :: header"></head>
+<link rel="stylesheet" href="/css/user/login.css">
+<body>
+<div class="top-box">注册</div>
+<div class="main-box">
+    <form id="signupForm">
+        <div class="layui-form-item">
+            <label class="layui-form-label">用户名</label>
+            <div class="layui-input-block">
+                <input id="username" type="text" name="username" class="layui-input"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">密码</label>
+            <div class="layui-input-block">
+                <input id="password" type="password" name="password" class="layui-input"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">确认密码</label>
+            <div class="layui-input-block">
+                <input id="confirmpassword" type="password" name="confirmpassword" class="layui-input"/>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <input type="submit" value="提交" class="layui-btn"/>
+            </div>
+        </div>
+    </form>
+</div>
+<div th:include="include :: js"></div>
+<script src="/js/user/register.js"></script>
+</body>
+</html>

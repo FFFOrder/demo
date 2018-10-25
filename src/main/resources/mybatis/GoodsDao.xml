@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.dao.GoodsDao">
+    <select id="list" resultType="com.example.demo.domain.GoodsDO">
+        select id,name,price,info,number,sold from goods
+        <where>
+            <if test="id != null and id != ''"> and id = #{id} </if>
+            <if test="keyword != null and keyword != ''"> and (name like concat('%',#{keyword},'%') or info like concat('%',#{keyword},'%'))</if>
+        </where>
+        <if test="limit != null and offset != null"> limit #{offset},#{limit}</if>
+    </select>
+    <select id="count" resultType="int">
+        select count(*) from goods
+        <where>
+            <if test="id != null and id != ''"> and id = #{id} </if>
+            <if test="keyword != null and keyword != ''"> and (name like concat('%',#{keyword},'%') or info like concat('%',#{keyword},'%'))</if>
+        </where>
+    </select>
+    <update id="save" parameterType="com.example.demo.domain.GoodsDO">
+        update goods
+        <set>
+            <if test="name != null">name = #{name}</if>
+            <if test="price != null">,price = #{price}</if>
+            <if test="number != null">,number = #{number}</if>
+            <if test="sold != null">,sold = #{sold}</if>
+            <if test="info != null">,info = #{info}</if>
+        </set>
+        where id = #{id}
+    </update>
+    <insert id="add" parameterType="com.example.demo.domain.GoodsDO">
+        insert into goods (
+            id,
+            name,
+            price,
+            number,
+            sold,
+            info
+        ) value (
+            #{id},
+            #{name},
+            #{price},
+            #{number},
+            #{sold},
+            #{info}
+        )
+    </insert>
+    <update id="addNumber">
+        update goods set number = number + #{number} where id = #{id}
+    </update>
+    <update id="sold">
+        update goods set sold = sold + #{sold} where id = #{id}
+    </update>
+</mapper>

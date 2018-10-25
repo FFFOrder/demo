@@ -6,6 +6,8 @@ import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Map;
+
 @Service
 public class UserServiceImpl implements UserService {
     @Autowired
@@ -19,7 +21,12 @@ public class UserServiceImpl implements UserService {
     public int add(UserDO userDO){
         return userDao.add(userDO);
     }
-    public String getUser(){
-        return "zzm";
+    @Override
+    public UserDO get(Map<String, Object> map){
+        return userDao.get(map);
+    }
+    @Override
+    public int update(UserDO userDO){
+        return userDao.update(userDO);
     }
 }

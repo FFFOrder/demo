@@ -1,0 +1,23 @@
+.topDiv {
+    border: 3px DarkGray;
+    border-style: none none solid none;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 10px;
+    height: 40px;
+}
+.border {
+    border: 3px solid red;
+}
+.right {
+    float:right;
+}
+.dropdown-menu {
+    display: none;
+}
+.menubar:hover{
+    color: blue;
+}
+.dropdown:hover .dropdown-menu {
+    display: block;
+}

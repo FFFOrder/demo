@@ -1,0 +1,15 @@
+.main-box {
+    width: 1024px;
+    margin: 0 auto;
+}
+.top-box {
+    text-align: center;
+    font-size: large;
+    height: 100px;
+    line-height: 100px;
+}
+.login-box {
+    width: 512px;
+    width: 400px;
+    margin-left: 256px;
+}

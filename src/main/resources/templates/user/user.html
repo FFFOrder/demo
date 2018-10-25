@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="include :: header"></head>
+<link rel="stylesheet" href="/css/user/user.css">
+<body>
+<div th:include="topDiv :: topDiv"></div>
+<div class="layui-main">
+    <div class="main-box">
+        <div>
+            <label>用户信息</label>
+            <button onclick="editlayer()" class="right">修改</button>
+        </div>
+        <div id="userInfo" class="info-box">
+            <div class="info-item">
+                <div class="info-name">用户名</div>
+                <div class="info-value" th:text="${user.username}"></div>
+            </div>
+            <div class="info-item">
+                <div class="info-name">邮箱</div>
+                <div class="info-value" th:text="${user.email}"></div>
+            </div>
+            <div class="info-item">
+                <div class="info-name">电话</div>
+                <div class="info-value" th:text="${user.phone}"></div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="/js/user/user.js"></script>
+</html>

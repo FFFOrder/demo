@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:include="include :: header"></head>
+<link rel="stylesheet" href="/css/goods/item.css">
+<body>
+<div th:include="topDiv :: topDiv"></div>
+<div class="layui-main">
+    <div class="big">
+        <div class="item-inline">
+            <img th:src="@{'/images/' + ${item.id} + '.jpg'}" class="item-img">
+        </div>
+        <div class="item-inline">
+            <div class="item-info">
+                名称：<label th:text="${item.name}"></label>
+            </div>
+            <div class="item-info">
+                价格：<label id="price" th:text="${item.price}"></label>
+            </div>
+            <div class="item-info">
+                销量：<label th:text="${item.sold}"></label>
+            </div>
+            <div class="item-info">
+                库存：<label id="number" th:text="${item.number}"></label>
+            </div>
+            <div class="item-info">
+                数量：<button onclick="itemReduce()" class="layui-icon layui-icon-left"></button>
+                <label id="goodsnumber" class="item-price">1</label>
+                <button onclick="itemAdd()" class="layui-icon layui-icon-right"></button>
+            </div>
+            <div class="item-info">
+                总共：<label id="totalPrice" th:text="${item.price}"></label>元
+            </div>
+            <button onclick="add()">添加购物车</button>
+        </div>
+    </div>
+    <input id="goodsid" type="hidden" th:value="${item.id}"/>
+</div>
+</body>
+<script src="/js/goods/item.js"></script>
+</html>

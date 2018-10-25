@@ -27,4 +27,20 @@ public class CartServiceImpl implements CartService {
         cartDao.delete(id);
         return 0;
     }
+    @Override
+    public int addNumber(CartDO cartDO){
+        return cartDao.addNumber(cartDO);
+    }
+    @Override
+    public CartDO getById(String id){
+        return cartDao.getById(id);
+    }
+    @Override
+    public int del(String id){
+        return cartDao.delete(id);
+    }
+    @Override
+    public int delAll(String username){
+        return cartDao.delAll(username);
+    }
 }

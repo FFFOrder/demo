@@ -1,0 +1,23 @@
+<div th:fragment="topDiv">
+    <!--<link rel="stylesheet" href="/layui/css/layui.css">-->
+    <link rel="stylesheet" href="/css/topDiv.css">
+    <div class="topDiv">
+        <a href="/">首页</a>
+        <div class="right">
+            <ul class="dropdown">
+                <a id="user" href="/user" class="menubar"></a>
+                <li class="dropdown-menu">
+                    <dd><a href="/user">用户信息</a></dd>
+                    <dd><a id="shoppingcart" href="/goods/shoppingcart">购物车</a></dd>
+                    <dd><a href="/goods/shoppinghistory">购物记录</a></dd>
+                    <dd><a href="#" onclick="exit()">退出</a></dd>
+                </li>
+            </ul>
+            <button id="login" onclick="loginlayer()">登录</button>
+        </div>
+    </div>
+    <script src="/js/common/jquery-3.3.1.js"></script>
+    <script src="/js/common/jquery.validate.js"></script>
+    <script src="/layui/layui.all.js"></script>
+    <script src="/js/topDiv.js"></script>
+</div>

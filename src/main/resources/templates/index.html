@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head th:include="include :: header"></head>
+<head>
+    <title>首页</title>
+    <link rel="stylesheet" href="/css/index.css">
+    <head th:include="include :: header"></head>
+</head>
 <body>
-<div width="500">
-    <div th:include="include :: topDiv"></div>
-    <div id="goods">
-        <div th:each="item:${goods}" style="float:left">
-            <a th:href="@{'/item/'} + ${item.id}">
-                <img th:src="@{'/images/' + ${item.id} + '.jpg'}" width="100px" height="100px"/>
+<div th:include="topDiv :: topDiv"></div>
+<div class="search-box">
+    <input class="search-input" type="text" id="search" placeholder="请输入关键词" th:value="${search}">
+    <button id="search-btn" class="search-btn">查询</button>
+</div>
+<div class="main-box">
+    <div id="goods" class="goods">
+        <div th:each="item:${pageUtil.list}" class="item-box">
+            <a th:href="@{'/goods/item/'} + ${item.id}">
+                <img th:src="@{'/images/' + ${item.id} + '.jpg'}" class="item-img" onerror="this.src='/images/null.jpg';this.onerror=null">
+                <div>
+                    <div class="item-inline font-red">
+                        ￥<div th:text="${item.price}" class="item-inline"></div>
+                    </div>
+                    <div class="item-inline float-right">
+                        <label class="item-inline">销量</label>
+                        <div class="item-inline" th:text="${item.sold}">100</div>
+                    </div>
+                </div>
                 <div th:text="${item.name}"></div>
-                <div th:text="${item.price}"></div>
             </a>
+        </div>
+        <div>
+            <input id="page" type="hidden" th:value="${pageUtil.page}">
+            <input id="pageCount" type="hidden" th:value="${pageUtil.pageCount}">
+            <a>上一页</a>
+            <div id="pageCodes"></div>
+            <a>下一页</a>
         </div>
     </div>
 </div>
 
-<div th:include="include :: footer"></div>
+<script src="/js/index.js"></script>
 </body>
 </html>

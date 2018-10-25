@@ -1,63 +1,55 @@
 $().ready(function() {
-    var a = $("#login");
-    var username = getUser();
-
-    if(username != null && username != "")
-    {
-        a.attr("disabled", true);
-        a.text(username);
-    }
-    else
-    {
-        $("#exit").hide();
-        $("#shoppingcart").hide();
-    }
+    //根据用户登录状态显示界面
+    changeView();
 });
-
-function login()
+//用户登录页面弹出层
+function loginlayer()
 {
     layer.open({
         type: 2,
-        title: 'login page',
         maxmin: true,
+        title: false,
         shadeClose: true,
         area: ['600px', '400px'],
         move: '.layui-layer-title',
-        content: '/login'
+        content: '/user/login'
     });
 }
-
-function getUser(){
-    var r;
+/*
+ *根据用户登录状态改变界面
+ *当用户为登录状态时，隐藏登录按钮，显示用户菜单
+ */
+function changeView(){
     $.ajax({
         cache : true,
         type : "POST",
-        url : "/getUser",
+        url : "/user/getUser",
         data : { },
-        async : false,
         error : function(request) {
             layer.alert("Connection error");
             r = "";
         },
         success : function(username) {
-            r = username;
+            if(username != null && username != "")
+            {
+                $("#login").hide();
+                $("#user").text(username);
+            }
         }
     });
-    return r;
 }
-
+//退出登录状态
 function exit(){
     $.ajax({
         cache : true,
         type : "POST",
-        url : "/exit",
+        url : "/user/exit",
         data : { },
         async : false,
         error : function(request) {
             layer.alert("Connection error");
         },
         success : function() {
-            layer.msg("操作成功");
             window.location.href="/";
         }
     });

@@ -1,0 +1,31 @@
+.big {
+    margin-top:50px;
+    width:70%;
+    height: 200px;
+}
+.item-box {
+    width: 200px;
+    float: left;
+    margin-left: 50px;
+    margin-bottom: 50px;
+}
+.item-img {
+    width: 200px;
+    height: 200px;
+}
+.item-inline {
+    float: left;
+    width: 40%;
+}
+.font-red {
+    color:red;
+}
+.float-right {
+    float: right;
+}
+.border {
+    border: 3px solid red;
+}
+.item-info {
+    height: 50px;
+}

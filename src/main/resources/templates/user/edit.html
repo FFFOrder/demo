@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="/css/user/edit.css">
+<body>
+<div class="main-box">
+    <form id="form">
+        <div class="item-box">
+            <div class="info-name">用户名</div>
+            <input id="username" name="username" type="text" readonly="readonly" th:value="${user.username}">
+        </div>
+        <div class="item-box">
+            <div class="info-name">手机</div>
+            <input id="phone" name="phone" type="text" th:value="${user.phone}">
+        </div>
+        <div class="item-box">
+            <div class="info-name">邮箱</div>
+            <input id="email" name="email" type="text" th:value="${user.email}">
+        </div>
+        <div class="item-box">
+            <input type="submit" value="保存">
+        </div>
+    </form>
+</div>
+</body>
+<div th:include="include :: js"></div>
+<script src="/js/user/edit.js"></script>
+</html>
